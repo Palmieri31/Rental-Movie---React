@@ -14,7 +14,7 @@ export default function Fav({ id }) {
     };
 
     return (
-      <button type="button" onClick={handleClick}>
+      <button type="submit" onClick={handleClick}>
         <span aria-label="Fav Gif" role="img">🧡</span>
       </button>
     );

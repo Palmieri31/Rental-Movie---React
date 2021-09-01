@@ -45,7 +45,7 @@ export default function AddMovie() {
             />
           </label>
 
-          <button type="button">Add Movie</button>
+          <button type="submit">Add Movie</button>
         </form>
       </div>
     </div>
