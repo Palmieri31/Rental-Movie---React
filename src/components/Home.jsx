@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import getMovies from '../api/movies';
 import MovieList from './MovieList';
 import '../App.css';
@@ -8,17 +8,17 @@ export default function Home() {
 
     useEffect(() => {
         getMovies()
-        .then(movies => setMovies(movies)) 
-        .catch(response => setMovies([]))   
+        .then((movie) => setMovies(movie))
+        .catch(() => setMovies([]));
     }, []);
 
-    return(
-        <div className="container">
-            { (!movies.length) ? (
-                <h3>no Movies found</h3> 
+    return (
+      <div className="container">
+        { (!movies.length) ? (
+          <h3>no Movies found</h3>
             ) : (
-                movies.map((movie)=><MovieList key={movie.id} movie={movie} />)
+                movies.map((movie) => <MovieList key={movie.id} movie={movie} />)
             )}
-        </div>
-    )
+      </div>
+    );
 }
