@@ -1,13 +1,19 @@
 import React, { useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import useUser from '../hooks/useUser';
 import FavList from './FavList';
 import '../App.css';
 
 export default function Favorites() {
-    const { getFav, favs } = useUser();
+    const { getFav, favs, isLogged } = useUser();
+    const history = useHistory();
 
     useEffect(() => {
-        getFav();
+        if (!isLogged) {
+          history.push('/auth');
+        } else {
+          getFav();
+        }
     }, []);
 
     return (

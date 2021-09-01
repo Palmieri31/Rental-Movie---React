@@ -1,12 +1,19 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import useUser from '../hooks/useUser';
 
 export default function AddMovie() {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [image, setImage] = useState('');
-  const { addMovie } = useUser();
+  const { addMovie, isLogged } = useUser();
+  const history = useHistory();
+
+  // eslint-disable-next-line consistent-return
+  useEffect(() => {
+    if (!isLogged) return history.push('/auth');
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();

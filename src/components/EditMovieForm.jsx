@@ -1,15 +1,20 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 /* eslint-disable object-curly-newline */
-import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useLocation, useHistory } from 'react-router-dom';
 import useUser from '../hooks/useUser';
 
 export default function EditMovieForm() {
     const [title, setTitle] = useState('');
     const [description, setDescription] = useState('');
     const [image, setImage] = useState('');
-    const { ModifyMovie } = useUser();
+    const { ModifyMovie, isLogged } = useUser();
     const location = useLocation();
+    const history = useHistory();
+
+    useEffect(() => {
+      if (!isLogged) history.push('/auth');
+    }, []);
 
     const handleSubmit = (e) => {
         e.preventDefault();

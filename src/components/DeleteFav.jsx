@@ -1,9 +1,16 @@
 /* eslint-disable react/prop-types */
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import useUser from '../hooks/useUser';
 
 export default function DeleteFav({ id }) {
-    const { deleteFav } = useUser();
+    const { deleteFav, isLogged } = useUser();
+    const history = useHistory();
+
+  // eslint-disable-next-line consistent-return
+  useEffect(() => {
+    if (!isLogged) return history.push('/auth');
+  }, []);
 
     const handleClick = () => {
         deleteFav(id);
