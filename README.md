@@ -1,70 +1,68 @@
-# Getting Started with Create React App
+# Rental Movie
+Backend
+Deberán crear una API donde el usuario pueda loguearse utilizando
+su email y su password, y al ser exitoso deberá devolver un token
+que quedará persistido en el Frontend.
+Deberán crear un sistema para una empresa dedicada al alquiler de
+películas, donde un usuario logueado puede ver el listado de
+películas disponibles y agregarla a sus favoritos, y desde su
+listado personal de favoritos poder quitar una película de la misma.
+Además de ello, los usuarios con rol de administrador pueden crear y
+modificar películas. Para lograr esto, deberán diseñar los endpoints
+y tablas que consideren necesarios.
+Para simplificar la complejidad de servir las carátulas de las películas
+al usuario, en su tabla deberán guardar una URL con la dirección de
+la imagen que luego será utilizada por el frontend.
+Algunas consideraciones y consejos:
+● Deberan utilizar MySQL o PostgreSQL.
+● Sean prolijos y consistentes con su código, nombre de tablas y
+columnas, estructura del proyecto, etc.
+● Utilicen archivos de configuración y/o variables de entorno
+● Sería recomendable que si ocurre un error con el request de un
+usuario, además de responder con el código correcto enviar un
+texto aclarando la causa del fallo que podría ser utilizado por el
+frontend para mostrar el mensaje.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Frontend
 
-## Available Scripts
+Utilizar “create react app” para generar la aplicación y React Router
+para crear las siguientes rutas:
 
-In the project directory, you can run:
+/auth -> publica
+Deberán crear un formulario de Login, y persistir el token.
+Los inputs del formulario deberán de estar validados.
+/home ->; publica
+Deberán crear una vista de Home y esta deberá ser la ruta por
+principal y por defecto en la cual deberá contar con un Navbar y con
+un botón de Login que al presionarlo deberá redirigir a la ruta /auth.
+En esta vista deberán mostrar el catálogo de películas obtenidas
+desde el backend y en caso de que esté logueado el usuario mostrará
+un botón en cada película para agregarla a favoritos.
+/favourites -> el usuario debe estar logueado
+Deberán mostrar las películas favoritas del usuario y permitir
+removerlas de la misma.
+/edit-movie -> el usuario debe ser administrador
+Deberán crear una vista en donde puedan editar una película a través
+de un formulario.
+/add-movie -> el usuario debe ser administrador
+Deberán crear una vista en donde puedan agregar una película a
+través de un formulario.
+Los inputs del formulario deberán de estar validados y evitar enviar un
+request si algo está incorrecto.
 
-### `yarn start`
+# Usuarios para ingresar en la base de datos rentalMovie (Mysql)
+INSERT INTO users (username, email, rol, password) VALUES ('user', 'user@123.com' , 2, '$2a$10$LMnAOGQPxwbwPVUBHYF9EuHU4Smf3/PQqpyulr7616FB/dpt1T8Ju');
+INSERT INTO users (username, email, rol, password) VALUES ('user', 'admin@123.com' , 1, '$2a$10$LMnAOGQPxwbwPVUBHYF9EuHU4Smf3/PQqpyulr7616FB/dpt1T8Ju');
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+# Usuarios para loguerse una vez realizado el paso anterior
+USER:
+{
+    "email":"user@123.com",
+    "password":"password"
+}
+ADMIN:
+{
+    "email":"admin@123.com",
+    "password":"password"
+}
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
