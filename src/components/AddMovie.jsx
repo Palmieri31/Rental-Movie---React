@@ -18,6 +18,7 @@ export default function AddMovie() {
   const handleSubmit = (e) => {
     e.preventDefault();
     addMovie({ title, description, image });
+    return history.push('/');
   };
 
   return (

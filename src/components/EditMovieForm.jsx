@@ -20,6 +20,7 @@ export default function EditMovieForm() {
         e.preventDefault();
         const id = location.state.detail;
         ModifyMovie({ id, title, description, image });
+        return history.push('/auth');
     };
 
     return (
@@ -54,7 +55,7 @@ export default function EditMovieForm() {
               />
             </label>
 
-            <button type="submit">Add Movie</button>
+            <button type="submit">Edit Movie</button>
           </form>
         </div>
       </div>

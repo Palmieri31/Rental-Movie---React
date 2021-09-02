@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import EditMovieList from './EditMovieList';
